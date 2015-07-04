@@ -1,0 +1,56 @@
+name:                verdeit
+version:             0.1.0.0
+synopsis:            Distributed content sharing platform
+description:
+  This is "Reddit done right"
+homepage:            https://github.com/pharpend/verdeit
+bug-reports:         https://github.com/pharpend/verdeit/issues
+license:             AGPL-3
+license-file:        LICENSE
+author:              Peter Harpending
+maintainer:          peter@harpending.org
+copyright:           Copyright (c) 2015, Peter Harpending
+category:            Web
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  
+  README.md
+  LICENSE
+
+library
+  hs-source-dirs:      lib
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+  build-depends:
+      base ==4.8.*
+  exposed-modules:     Web.Verdeit
+
+executable verdeit
+  hs-source-dirs:      exe
+  default-language:    Haskell2010
+  main-is:             Main.hs
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , verdeit
+
+test-suite tests
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      spec
+  default-language:    Haskell2010
+  main-is:             Spec.hs
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , hspec
+    , QuickCheck
+    , verdeit
+
+source-repository head
+  type:     git
+  location: git://github.com/pharpend/verdeit.git
+
+source-repository this
+  type:     git
+  location: git://github.com/pharpend/verdeit.git
+  tag:      0.1.0.0
